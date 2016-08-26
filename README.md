@@ -1,8 +1,8 @@
-# Logly Lift Mobile SDK (#MEMO:名前はこれでいいか？）
+# Logly Lift Mobile SDK (作成中)
 
 ## 概要
-* iOS SDK: ***URL***
-* Android SDK: ***URL***
+* iOS SDK: https://github.com/logly/LiftSDK-iOS
+* Android SDK: https://github.com/logly/LiftSDK-Android
 
 このLogly Lift Mobile SDKは、iOS & Androidのモバイル・アプリケーション向けに、Loglyのliftレコメンデーション・システムを使用するためのSDKです。
 
@@ -19,10 +19,10 @@ liftシステムではページに対するレコメンドを行うので、モ�
 ３. アプリからliftシステムへアクセスしてレコメンド結果を取得
 　SDKのwidget（もしくはAPI）を使用して、ページに対するレコメンド結果をliftシステムから取得します
 
-ページの識別にはMDL（Mobile Deep Link)をキーにしたURIを使用してページを識別します。これは、擬似的なページ識別用のリンクで、アプリケーションはこのリンクを開けるようにしておく必要があります。もちろん、擬似的ではない、実際のページがweb上にある場合には、そのURLを使用することも可能です。(その場合にはブラウザ等でリンクを開く事も可能です。サンプルアプリではこの方法を使っています。)
+ページの識別にはMDL（Mobile Deep Link)をキーにしたURIを使用してページを識別します。これは、擬似的なページ識別用のリンクで、アプリケーションはこのリンクを開けるようにしておく必要があります。もちろん、擬似的ではない、実際のページがweb上にある場合には、そのURLを使用することも可能です。(その場合にはブラウザ等でリンクを開く事も可能です。)
 
 ## 必要システム・ヴァージョン
-* iOS: 7 以上？
+* iOS: 7 以上
 * Android: SDK 15 (Android 4.0.3)以上
 
 ## インストール: iOS
@@ -43,10 +43,10 @@ Android版のSDKライブラリをインストールするには、jCenterのmav
 
 ```
 dependencies {
-    compile 'com.inthecheesefactory.thecheeselibrary:fb-like:0.9.3'
+    compile 'jp.co.logly:lift-sdk:1.0.0'
 }
 ```
-MEMO: 以下の設定も必要かも
+MEMO: 動作しない場合、以下の設定の全部または一部を追加してください
 
 ```
 android {
@@ -87,7 +87,6 @@ dependencies {
 
 ## SDK: シンプル widget　＆　サンプルアプリ
 このモバイルSDKには、iOS, Android それぞれに、シンプルなレコメンド表示用widget(View)が付属しています。このwidgetは内部でAPIを呼び出しその結果をwidget上に表示します。そのwidgetを使用したサンプルアプリがSDKに入っています。SDKユーザーはこのサンプルアプリを参考に、組み込みを行うことができます。
-＃MEMO:サンプルアプリにはMDLをオープンする機能はない。
 
 ### シンプル widget : iOS
 1. storybord / xib (あるいはコード）等で、LGLiftWidgetを画面に配置
@@ -173,7 +172,7 @@ liftシステムでは、あらかじめページデータをシステムへ登�
 * user : Loglyからあらかじめお知らせしたユーザーIDを入れてください。
 * items : ページデーターの配列
 内容(ページデータ):
-* url : (required) キーとなるMDL。実際にweb上にページがある場合にはURLでも良い。#MEMO: mdl の方が良い？
+* url : (required) キーとなるMDL。実際にweb上にページがある場合にはURLでも良い。
 * title : (required) タイトル #MEMO: max何文字？
 * summary : (optional) サマリー #MEMO: max何文字？titleとの違いは？
 * text : (required) 本文テキスト
