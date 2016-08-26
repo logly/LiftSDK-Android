@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+    android:id="@+id/blog_detail"
+    style="?android:attr/textAppearanceLarge"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:padding="16dp"
+    android:textIsSelectable="true"
+    tools:context="com.example.ado.mylisting.BlogDetailFragment"
+        android:layout_weight="1" />
+
+    <jp.co.logly.Lift.WidgetView
+        android:id="@+id/lift_widget"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical"/>
+</LinearLayout>
