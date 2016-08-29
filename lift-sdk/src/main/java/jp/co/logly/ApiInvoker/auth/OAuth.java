@@ -30,7 +30,7 @@ import jp.co.logly.ApiInvoker.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-08-26T16:48:48.171+09:00")
+
 public class OAuth implements Authentication {
   private String accessToken;
 

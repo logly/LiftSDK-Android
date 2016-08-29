@@ -37,7 +37,7 @@ import jp.co.logly.Lift.Result.InlineResponse200Items;
 /**
  * InlineResponse200
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-08-26T16:48:48.171+09:00")
+
 public class InlineResponse200   {
   @SerializedName("items")
   private List<InlineResponse200Items> items = new ArrayList<InlineResponse200Items>();

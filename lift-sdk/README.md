@@ -1,4 +1,4 @@
-# swagger-java-client
+# lift-sdk
 
 ## Requirements
 
@@ -26,9 +26,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-java-client</artifactId>
-    <version>1.0.0</version>
+    <groupId>jp.co.logly</groupId>
+    <artifactId>lift-sdk</artifactId>
+    <version>0.9</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.swagger:swagger-java-client:1.0.0"
+compile "jp.co.logly:lift-sdk:0.9"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/swagger-java-client-1.0.0.jar
+* target/lift-sdk-0.9.jar
 * target/lib/*.jar
 
 ## Getting Started

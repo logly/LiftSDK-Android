@@ -35,7 +35,7 @@ import java.math.BigDecimal;
 /**
  * InlineResponse200Items
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-08-26T16:48:48.171+09:00")
+
 public class InlineResponse200Items   {
   @SerializedName("published_at")
   private String publishedAt = null;

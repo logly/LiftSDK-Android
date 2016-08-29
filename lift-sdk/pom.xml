@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.swagger</groupId>
-  <artifactId>swagger-java-client</artifactId>
-  <packaging>jar</packaging>
-  <name>swagger-java-client</name>
-  <version>1.0.0</version>
+  <groupId>jp.co.logly</groupId>
+  <artifactId>lift-sdk</artifactId>
+  <packaging>aar</packaging>
+  <name>lift-sdk</name>
+  <version>0.9.1</version>
   <scm>
-    <connection>scm:git:git@github.com:swagger-api/swagger-mustache.git</connection>
-    <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
+    <connection>scm:git:git@github.com:logly/LiftSDK-Android.git</connection>
+    <developerConnection>scm:git:git@github.com:logly/LiftSDK-Android.git</developerConnection>
+    <url>https://github.com/logly/LiftSDK-Android.git</url>
   </scm>
   <prerequisites>
     <maven>2.2.0</maven>
