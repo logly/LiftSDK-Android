@@ -1,6 +1,6 @@
 /**
  * Logly lift.json API
- * Logly lift.json API
+ * Logly lift.json API for Lift Mobile SDK
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -169,7 +169,7 @@ public class ApiClient {
         this.lenientDatetimeFormat = true;
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/0.9.1/java");
+        setUserAgent("Swagger-Codegen/0.9.2/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
