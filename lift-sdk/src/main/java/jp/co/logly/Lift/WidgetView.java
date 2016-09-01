@@ -96,24 +96,31 @@ public class WidgetView extends LinearLayout {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            InlineResponse200Items item = getItem(position);
-
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.lift_widget_cell, parent, false);
+            }
+
+            InlineResponse200Items item = getItem(position);
+            if (item == null) {
+                return convertView;
             }
 
             TextView textView = (TextView) convertView.findViewById(R.id.Lead);
             textView.setText(item.getLead());
             textView = (TextView) convertView.findViewById(R.id.Text);
-            if (item.getIsArticle() != 1 && item.getAdvertisingSubject() != null) {
+            if (item.getIsArticle() != null && item.getIsArticle() != 1 && item.getAdvertisingSubject() != null) {
                 textView.setText("PR: " + item.getAdvertisingSubject());
             } else {
                 textView.setText(item.getTitle());
             }
 
-            ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-            new DownloadImageTask(imageView).execute(resolveUrl(item.getImageUrl()));
-            new DownloadImageTask(null).execute(resolveUrl(item.getBeaconUrl()));
+            if (item.getImageUrl() != null) {
+                ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
+                new DownloadImageTask(imageView).execute(resolveUrl(item.getImageUrl()));
+            }
+            if (item.getBeaconUrl() != null ) {
+                new DownloadImageTask(null).execute(resolveUrl(item.getBeaconUrl()));
+            }
 
             return convertView;
         }
@@ -141,7 +148,7 @@ public class WidgetView extends LinearLayout {
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 InlineResponse200Items item = mAdaptor.getItem(position);
-                String url = item.getUrl();
+                String url = item.getLdUrl();
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 getContext().startActivity(browserIntent);
 
@@ -156,7 +163,7 @@ public class WidgetView extends LinearLayout {
                         }
                         return null;
                     }
-                }.execute(item.getLdUrl());
+                }.execute(item.getUrl());
             }
         });
     }
