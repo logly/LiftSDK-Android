@@ -64,7 +64,7 @@ public class BlogDetailFragment extends Fragment {
             textView.setText(mItem.details);
 
             WidgetView liftWidget = (WidgetView) rootView.findViewById(R.id.lift_widget);
-            liftWidget.requestByURL(mItem.url, 3777016, 1684, "http://blog.logly.co.jp/");
+            liftWidget.requestByURL(mItem.url, 4228263, 3624, "http://blog.logly.co.jp/");
         }
 
         return rootView;
