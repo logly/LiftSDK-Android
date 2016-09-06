@@ -262,10 +262,10 @@ public class InlineResponse200Items   {
   }
 
    /**
-   * ページのURL(MDL)
+   * click計測用のアクセスURL(アクセスするとld_urlと同じURLへのリダイレクトが返信される)
    * @return url
   **/
-  @ApiModelProperty(example = "null", value = "ページのURL(MDL)")
+  @ApiModelProperty(example = "null", value = "click計測用のアクセスURL(アクセスするとld_urlと同じURLへのリダイレクトが返信される)")
   public String getUrl() {
     return url;
   }
@@ -298,10 +298,10 @@ public class InlineResponse200Items   {
   }
 
    /**
-   * click計測用のアクセスURL
+   * ページのURL(MDL)
    * @return ldUrl
   **/
-  @ApiModelProperty(example = "null", value = "click計測用のアクセスURL")
+  @ApiModelProperty(example = "null", value = "ページのURL(MDL)")
   public String getLdUrl() {
     return ldUrl;
   }

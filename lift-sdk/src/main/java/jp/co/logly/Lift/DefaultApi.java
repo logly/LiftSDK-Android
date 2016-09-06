@@ -139,7 +139,7 @@ public class DefaultApi {
      * @param widgetId Lift wiget ID (required)
      * @param url キーとなるページ URL (MDL) (required)
      * @param ref リファラーURL（通常Mobileでは必要なし） (optional)
-     * @param toplevel json toplevel hash名: 通常は&#39;items&#39;を指定 (optional, default to items)
+     * @param toplevel jsonトップレベルhash名: 通常は&#39;items&#39;を指定 (optional, default to items)
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -155,7 +155,7 @@ public class DefaultApi {
      * @param widgetId Lift wiget ID (required)
      * @param url キーとなるページ URL (MDL) (required)
      * @param ref リファラーURL（通常Mobileでは必要なし） (optional)
-     * @param toplevel json toplevel hash名: 通常は&#39;items&#39;を指定 (optional, default to items)
+     * @param toplevel jsonトップレベルhash名: 通常は&#39;items&#39;を指定 (optional, default to items)
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -172,7 +172,7 @@ public class DefaultApi {
      * @param widgetId Lift wiget ID (required)
      * @param url キーとなるページ URL (MDL) (required)
      * @param ref リファラーURL（通常Mobileでは必要なし） (optional)
-     * @param toplevel json toplevel hash名: 通常は&#39;items&#39;を指定 (optional, default to items)
+     * @param toplevel jsonトップレベルhash名: 通常は&#39;items&#39;を指定 (optional, default to items)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -27,7 +27,7 @@ Long adspotId = 789L; // Long | Lift adspot ID
 Long widgetId = 789L; // Long | Lift wiget ID
 String url = "url_example"; // String | キーとなるページ URL (MDL)
 String ref = "ref_example"; // String | リファラーURL（通常Mobileでは必要なし）
-String toplevel = "items"; // String | json toplevel hash名: 通常は'items'を指定
+String toplevel = "items"; // String | jsonトップレベルhash名: 通常は'items'を指定
 try {
     InlineResponse200 result = apiInstance.requestLift(adspotId, widgetId, url, ref, toplevel);
     System.out.println(result);
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
  **widgetId** | **Long**| Lift wiget ID |
  **url** | **String**| キーとなるページ URL (MDL) |
  **ref** | **String**| リファラーURL（通常Mobileでは必要なし） | [optional]
- **toplevel** | **String**| json toplevel hash名: 通常は&#39;items&#39;を指定 | [optional] [default to items]
+ **toplevel** | **String**| jsonトップレベルhash名: 通常は&#39;items&#39;を指定 | [optional] [default to items]
 
 ### Return type
 
