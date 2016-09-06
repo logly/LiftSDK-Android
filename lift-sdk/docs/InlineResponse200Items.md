@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **site** | **String** |  |  [optional]
 **isArticle** | **Integer** | 1 &#x3D; true, レコメンドが見つからず、広告が返ってきた場合 |  [optional]
 **imageUrl** | **String** | イメージのURL |  [optional]
-**url** | **String** | ページのURL(MDL) |  [optional]
+**url** | **String** | click計測用のアクセスURL(アクセスするとld_urlと同じURLへのリダイレクトが返信される) |  [optional]
 **title** | **String** | タイトル |  [optional]
-**ldUrl** | **String** | click計測用のアクセスURL |  [optional]
+**ldUrl** | **String** | ページのURL(MDL) |  [optional]
 
 
 
