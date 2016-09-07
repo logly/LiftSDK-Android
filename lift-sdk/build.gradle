@@ -118,7 +118,8 @@ if(hasProperty('target') && target == 'android') {
             licenses = ['Apache-2.0']
             vcsUrl = 'https://github.com/logly/LiftSDK-Android.git'
             version {
-                name = "${version}"
+                //name = "${version}"
+                name = '0.9.5' 
                 desc = 'Logly Lift Mobile SDK for Android'
                 released  = new Date()
                 vcsTag = "${version}"
