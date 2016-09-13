@@ -107,13 +107,12 @@ public class WidgetView extends LinearLayout {
                 return convertView;
             }
 
-            TextView textView = (TextView) convertView.findViewById(R.id.Lead);
-            textView.setText(item.getLead());
+            TextView textView = (TextView) convertView.findViewById(R.id.Title);
+            textView.setText(item.getTitle());
             textView = (TextView) convertView.findViewById(R.id.Text);
+            textView.setText("");
             if (item.getIsArticle() != null && item.getIsArticle() != 1 && item.getAdvertisingSubject() != null) {
                 textView.setText("PR: " + item.getAdvertisingSubject());
-            } else {
-                textView.setText(item.getTitle());
             }
 
             if (item.getImageUrl() != null) {
