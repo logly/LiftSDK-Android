@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import jp.co.logly.ApiInvoker.ApiException;
@@ -38,6 +39,7 @@ public class WidgetView extends LinearLayout {
     private GridView mGridView;
     private ResponseArrayAdaptor mAdaptor;
     private String mURL;
+    private HashSet<Integer> mSentBeaconIndexes = new HashSet<Integer>();
 
     public WidgetView(Context context) {
         super(context);
@@ -118,8 +120,9 @@ public class WidgetView extends LinearLayout {
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
                 new DownloadImageTask(imageView).execute(resolveUrl(item.getImageUrl()));
             }
-            if (item.getBeaconUrl() != null ) {
+            if (item.getBeaconUrl() != null && !mSentBeaconIndexes.contains(position)) {
                 new DownloadImageTask(null).execute(resolveUrl(item.getBeaconUrl()));
+                mSentBeaconIndexes.add(position);
             }
 
             return convertView;
@@ -177,6 +180,7 @@ public class WidgetView extends LinearLayout {
      */
     public void requestByURL(final String inURL, final long inAdspotID, final long inWidgetID, final String inRef) {
         mURL = inURL;
+        mSentBeaconIndexes.clear();
         new AsyncTask<Void, Void, InlineResponse200>() {
 
             @Override
