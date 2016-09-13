@@ -41,6 +41,26 @@ public class WidgetView extends LinearLayout {
     private String mURL;
     private HashSet<Integer> mSentBeaconIndexes = new HashSet<Integer>();
 
+    /**
+     * Interface definition for a callback to be invoked when an item in this
+     * WidgetView has been clicked.
+     */
+    public interface OnWigetItemClickListener {
+
+        /**
+         * Callback method to be invoked when an item in this AdapterView has
+         * been clicked.
+         *
+         * @param widget The WidgetView where the click happened.
+         * @param url clicked item's landing URL. (shortcut for item.ldUrl )
+         * @param item clicked item's data.
+         * @return boolean whether Listener handled click action. when false, WidgetView will open system browser.
+         */
+        boolean onItemClick(WidgetView widget, String url, InlineResponse200Items item);
+    }
+
+    public OnWigetItemClickListener mOnWigetItemClickListener = null;
+
     public WidgetView(Context context) {
         super(context);
         init(context, null, 0);
@@ -150,9 +170,6 @@ public class WidgetView extends LinearLayout {
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 InlineResponse200Items item = mAdaptor.getItem(position);
-                String url = item.getLdUrl();
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                getContext().startActivity(browserIntent);
 
                 // click tracking.
                 new AsyncTask<String, Void, Void>() {
@@ -166,20 +183,35 @@ public class WidgetView extends LinearLayout {
                         return null;
                     }
                 }.execute(item.getUrl());
+
+                // click callback.
+                String url = item.getLdUrl();
+                if (url == null) { url = item.getUrl(); }
+                if (mOnWigetItemClickListener != null) {
+                    Boolean handled = mOnWigetItemClickListener.onItemClick(WidgetView.this, url, item);
+                    if (handled) {
+                        return;
+                    }
+                }
+
+                // open browser.
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                getContext().startActivity(browserIntent);
             }
         });
     }
 
     /**
      * start request Lift recomendation data.
-     * @param inURL
-     * @param inAdspotID
-     * @param inWidgetID
-     * @param inRef
+     * @param inURL page URL as recomendation key.
+     * @param inAdspotID Lift adspot ID
+     * @param inWidgetID Lift wiget ID
+     * @param inRef Referrer URL (usually empty for Mobile user).
      */
     public void requestByURL(final String inURL, final long inAdspotID, final long inWidgetID, final String inRef) {
         mURL = inURL;
         mSentBeaconIndexes.clear();
+
         new AsyncTask<Void, Void, InlineResponse200>() {
 
             @Override
