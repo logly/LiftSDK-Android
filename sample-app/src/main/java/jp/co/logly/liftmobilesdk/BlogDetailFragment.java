@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 
+import jp.co.logly.Lift.Result.InlineResponse200Items;
 import jp.co.logly.Lift.WidgetView;
 import jp.co.logly.liftmobilesdk.data.BlogContent;
 
@@ -64,6 +67,20 @@ public class BlogDetailFragment extends Fragment {
             textView.setText(mItem.details);
 
             WidgetView liftWidget = (WidgetView) rootView.findViewById(R.id.lift_widget);
+            liftWidget.mOnWigetItemClickListener = new WidgetView.OnWigetItemClickListener() {
+                @Override
+                public boolean onItemClick(WidgetView widget, String url, InlineResponse200Items item) {
+                    if (BlogDetailActivity.isDebugMode) {
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle("Debug mode.")
+                                .setMessage(url)
+                                .setPositiveButton("Dissmiss", null)
+                                .show();
+                        return true;
+                    }
+                    return false;
+                }
+            };
             liftWidget.requestByURL(mItem.url, 4228263, 3624, "http://blog.logly.co.jp/");
         }
 

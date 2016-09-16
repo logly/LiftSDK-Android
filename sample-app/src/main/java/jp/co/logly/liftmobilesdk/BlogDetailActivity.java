@@ -22,6 +22,7 @@ import java.util.List;
  * in a {@link BlogListActivity}.
  */
 public class BlogDetailActivity extends AppCompatActivity {
+    public static Boolean isDebugMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +31,14 @@ public class BlogDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
+        isDebugMode = false;
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "Debug mode enabled.", Snackbar.LENGTH_LONG)
+                        .setAction("OK", null).show();
+                isDebugMode = true;
             }
         });
 
