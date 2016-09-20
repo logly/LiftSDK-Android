@@ -18,7 +18,7 @@
     <jp.co.logly.Lift.WidgetView
         android:id="@+id/lift_widget"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="434dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:orientation="vertical"/>
