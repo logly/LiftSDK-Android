@@ -74,7 +74,7 @@ public class BlogDetailFragment extends Fragment {
                         new AlertDialog.Builder(getActivity())
                                 .setTitle("Debug mode.")
                                 .setMessage(url)
-                                .setPositiveButton("Dissmiss", null)
+                                .setPositiveButton("Dismiss", null)
                                 .show();
                         return true;
                     }
