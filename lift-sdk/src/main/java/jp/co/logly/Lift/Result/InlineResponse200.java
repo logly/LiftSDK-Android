@@ -47,6 +47,11 @@ public class InlineResponse200   {
     return this;
   }
 
+  public InlineResponse200 addItemsItem(InlineResponse200Items itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
    /**
    * Get items
    * @return items

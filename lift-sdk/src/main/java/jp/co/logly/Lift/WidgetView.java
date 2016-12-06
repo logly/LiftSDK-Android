@@ -202,8 +202,8 @@ public class WidgetView extends LinearLayout {
     }
 
     /**
-     * start request Lift recomendation data.
-     * @param inURL page URL as recomendation key.
+     * start request Lift recommendation data.
+     * @param inURL page URL as recommendation key.
      * @param inAdspotID Lift adspot ID
      * @param inWidgetID Lift wiget ID
      * @param inRef Referrer URL (usually empty for Mobile user).
