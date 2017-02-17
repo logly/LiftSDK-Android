@@ -50,7 +50,7 @@ Android版のSDKライブラリをインストールするには、jCenterのmav
 
 ```
 dependencies {
-    compile 'jp.co.logly:lift-sdk:0.9.8'
+    compile 'jp.co.logly:lift-sdk:0.9.9'
 }
 ```
 
