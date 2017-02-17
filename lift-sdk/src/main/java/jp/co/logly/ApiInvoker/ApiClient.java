@@ -25,6 +25,9 @@
 
 package jp.co.logly.ApiInvoker;
 
+import android.content.res.Resources;
+import android.os.Build;
+
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -169,12 +172,23 @@ public class ApiClient {
         this.lenientDatetimeFormat = true;
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/0.9.8/java");
+        setUserAgent("Swagger-Codegen/0.9.9/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
+
+        // modify User-Agent : "Logly-Mobile-Lift/0.9.9/java-okhttp-gson (Linux; Android 7.1; unknown Android SDK built for x86 ) Chrome/0.0.0 Mobile Safari ( Smart Phone )"
+        String UA = defaultHeaderMap.get("User-Agent");
+        UA = UA.replace("Swagger-Codegen/", "Logly-Mobile-Lift/");
+        UA = UA.replace("/java", "/java-okhttp-gson");
+        String safari = "Mobile Safari ( Smart Phone )";
+        if (Resources.getSystem().getConfiguration().smallestScreenWidthDp >= 600) {
+            safari = "Safari ( Tablet )";
+        }
+        UA += String.format(" (Linux; Android %s; %s %s ) Chrome/0.0.0 %s", Build.VERSION.RELEASE, Build.MANUFACTURER, Build.MODEL, safari);
+        setUserAgent(UA);
     }
 
     /**
