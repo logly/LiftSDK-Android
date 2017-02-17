@@ -5,7 +5,7 @@
   <artifactId>lift-sdk</artifactId>
   <packaging>aar</packaging>
   <name>lift-sdk</name>
-  <version>0.9.8</version>
+  <version>0.9.9</version>
   <scm>
     <connection>scm:git:git@github.com:logly/LiftSDK-Android.git</connection>
     <developerConnection>scm:git:git@github.com:logly/LiftSDK-Android.git</developerConnection>

@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'jp.co.logly'
-version = '0.9.8'
+version = '0.9.9'
 
 buildscript {
     repositories {
@@ -119,7 +119,7 @@ if(hasProperty('target') && target == 'android') {
             vcsUrl = 'https://github.com/logly/LiftSDK-Android.git'
             version {
                 //name = "${version}"
-                name = '0.9.8' 
+                name = '0.9.9' 
                 desc = 'Logly Lift Mobile SDK for Android'
                 released  = new Date()
                 vcsTag = "${version}"
