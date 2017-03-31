@@ -1,5 +1,5 @@
 # logly lift Mobile SDK
- [![Bintray](https://img.shields.io/bintray/v/adonishi/Logly-Lift-SDK/lift-sdk.svg?maxAge=2592000)](https://bintray.com/adonishi/Logly-Lift-SDK/lift-sdk) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+ [ ![Download](https://api.bintray.com/packages/adonishi/Logly-Lift-SDK/lift-sdk/images/download.svg) ](https://bintray.com/adonishi/Logly-Lift-SDK/lift-sdk/_latestVersion) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## 概要
 * iOS SDK: https://github.com/logly/LiftSDK-iOS
@@ -168,7 +168,7 @@ API clientの仕様については、別ファイルのAPIドキュメント[API
 liftシステムでは、あらかじめページデータをシステムへ登録し、そのページデータに基づいたレコメンド（中間）結果をシステム上で計算します。
 ページデータの登録方法は、Amazon AWS S3へ登録用データのJSONファイルをアップロードすることで、自動的に処理されます。
 
-注：アップロードしたJSONファイルはすぐに処理され、エラーなく登録された場合には、すぐに消去されます。アップロードした直後にファイルがなくなっていた場合には、正常に処理されたと考えられます。逆にファイルが残っていた場合には、何らかのエラーが起こったと考えられます。その際にはアップロードされたデータは全く、登録されません。修正したファイルをアップロードするか、loglyのサポートまでご連絡ください。
+注：アップロードしたJSONファイルは定期的に処理され、エラーなく登録された場合には、すぐに消去されます。ある程度の時間がたった後にファイルがなくなっていた場合には、正常に処理されたと考えられます。逆にファイルが残っていた場合には、何らかのエラーが起こったと考えられます。その際にはアップロードされたデータは全く、登録されません。修正したファイルをアップロードするか、loglyのサポートまでご連絡ください。
 
 前準備：loglyからあらかじめ、Amazon AWS S3にアクセスするときの認証情報、アップロードすべきbucket名とフォルダ名を取得してください。
 
