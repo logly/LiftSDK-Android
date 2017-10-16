@@ -31,6 +31,14 @@ public class BlogDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
 
     /**
+     * adspot_id & widget_id, ref_url of this sample application.
+     * NOTE: ref_url can be empty string in mobile sdk.
+     */
+    public static final long LOGLY_SAMPLE_ADSPOT_ID = 4228263;
+    public static final long LOGLY_SAMPLE_WIDGET_ID = 3624;
+    public static final String LOGLY_SAMPLE_REF_URL = "";
+
+    /**
      * The dummy content this fragment is presenting.
      */
     private BlogContent.BlogItem mItem;
@@ -81,7 +89,7 @@ public class BlogDetailFragment extends Fragment {
                     return false;
                 }
             };
-            liftWidget.requestByURL(mItem.url, 4228263, 3624, "http://blog.logly.co.jp/");
+            liftWidget.requestByURL(mItem.url, LOGLY_SAMPLE_ADSPOT_ID, LOGLY_SAMPLE_WIDGET_ID, LOGLY_SAMPLE_REF_URL);
         }
 
         return rootView;
