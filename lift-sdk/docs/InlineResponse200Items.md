@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **url** | **String** | click計測用のアクセスURL(アクセスするとld_urlと同じURLへのリダイレクトが返信される) |  [optional]
 **title** | **String** | タイトル |  [optional]
 **ldUrl** | **String** | ページのURL(MDL) |  [optional]
+**category** | **String** | カテゴリ名 |  [optional]
 
 
 

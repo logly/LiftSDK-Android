@@ -1,6 +1,6 @@
 # DefaultApi
 
-All URIs are relative to *https://l.logly.co.jp/*
+All URIs are relative to *https://l.logly.co.jp*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
