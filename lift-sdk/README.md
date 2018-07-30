@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>jp.co.logly</groupId>
     <artifactId>lift-sdk</artifactId>
-    <version>0.9</version>
+    <version>0.9.11</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "jp.co.logly:lift-sdk:0.9"
+compile "jp.co.logly:lift-sdk:0.9.11"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/lift-sdk-0.9.jar
+* target/lift-sdk-0.9.11.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -60,7 +60,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 import jp.co.logly.ApiInvoker.*;
 import jp.co.logly.ApiInvoker.auth.*;
-import jp.co.logly.ApiInvoker.model.*;
+import jp.co.logly.Lift.Result.*;
 import jp.co.logly.Lift.DefaultApi;
 
 import java.io.File;
@@ -75,7 +75,7 @@ public class DefaultApiExample {
         Long widgetId = 789L; // Long | Lift wiget ID
         String url = "url_example"; // String | キーとなるページ URL (MDL)
         String ref = "ref_example"; // String | リファラーURL（通常Mobileでは必要なし）
-        String toplevel = "items"; // String | json toplevel hash名: 通常は'items'を指定
+        String toplevel = "items"; // String | jsonトップレベルhash名: 通常は'items'を指定
         try {
             InlineResponse200 result = apiInstance.requestLift(adspotId, widgetId, url, ref, toplevel);
             System.out.println(result);
@@ -90,7 +90,7 @@ public class DefaultApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://l.logly.co.jp/*
+All URIs are relative to *https://l.logly.co.jp*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -110,7 +110,7 @@ Authentication schemes defined for the API:
 
 ## Recommendation
 
-It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issue.
+It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ## Author
 

@@ -68,21 +68,22 @@ public class DefaultApi {
      */
     public com.squareup.okhttp.Call requestLiftCall(Long adspotId, Long widgetId, String url, String ref, String toplevel, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/lift.json";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (adspotId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "adspot_id", adspotId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("adspot_id", adspotId));
         if (widgetId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "widget_id", widgetId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("widget_id", widgetId));
         if (url != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "url", url));
+        localVarQueryParams.addAll(apiClient.parameterToPair("url", url));
         if (ref != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "ref", ref));
+        localVarQueryParams.addAll(apiClient.parameterToPair("ref", ref));
         if (toplevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "toplevel", toplevel));
+        localVarQueryParams.addAll(apiClient.parameterToPair("toplevel", toplevel));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -113,9 +114,9 @@ public class DefaultApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call requestLiftValidateBeforeCall(Long adspotId, Long widgetId, String url, String ref, String toplevel, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -134,14 +135,10 @@ public class DefaultApi {
             throw new ApiException("Missing the required parameter 'url' when calling requestLift(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = requestLiftCall(adspotId, widgetId, url, ref, toplevel, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

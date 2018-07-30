@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/lift-sdk" />
             <option value="$PROJECT_DIR$/sample-app" />
+            <option value="$PROJECT_DIR$/sample-app-kotlin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

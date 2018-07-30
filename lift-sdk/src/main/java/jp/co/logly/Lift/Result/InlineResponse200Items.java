@@ -388,6 +388,6 @@ public class InlineResponse200Items {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

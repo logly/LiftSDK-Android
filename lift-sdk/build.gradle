@@ -2,16 +2,15 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'jp.co.logly'
-version = '0.9.10'
+version = '0.9.11'
 
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+        classpath 'com.android.tools.build:gradle:2.3.+'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -23,139 +22,45 @@ repositories {
 if(hasProperty('target') && target == 'android') {
 
     apply plugin: 'com.android.library'
+    apply plugin: 'com.github.dcendents.android-maven'
 
     android {
-        compileSdkVersion 23
-        buildToolsVersion '25.0.0'
+        compileSdkVersion 25
+        buildToolsVersion '27.0.3'
         defaultConfig {
             minSdkVersion 14
-            targetSdkVersion 23
+            targetSdkVersion 25
         }
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_7
             targetCompatibility JavaVersion.VERSION_1_7
         }
 
-//        // Rename the aar correctly
-//        libraryVariants.all { variant ->
-//            variant.outputs.each { output ->
-//                def outputFile = output.outputFile
-//                if (outputFile != null && outputFile.name.endsWith('.aar')) {
-//                    def fileName = "${project.name}-${variant.baseName}-${version}.aar"
-//                    output.outputFile = new File(outputFile.parent, fileName)
-//                }
-//            }
-//        }
-
-        dependencies {
-            provided 'javax.annotation:jsr250-api:1.0'
-        }
-
-        lintOptions {
-            abortOnError false
-        }
-    }
-
-//    afterEvaluate {
-//        android.libraryVariants.all { variant ->
-//            def task = project.tasks.create "jar${variant.name.capitalize()}", Jar
-//            task.description = "Create jar artifact for ${variant.name}"
-//            task.dependsOn variant.javaCompile
-//            task.from variant.javaCompile.destinationDir
-//            task.destinationDir = project.file("${project.buildDir}/outputs/jar")
-//            task.archiveName = "${project.name}-${variant.baseName}-${version}.jar"
-//            artifacts.add('archives', task);
-//        }
-//    }
-//
-//    task sourcesJar(type: Jar) {
-//        from android.sourceSets.main.java.srcDirs
-//        classifier = 'sources'
-//    }
-//
-//    artifacts {
-//        archives sourcesJar
-//    }
-//
-    ext {
-//        PUBLISH_GROUP_ID = 'jp.co.logly'
-//        PUBLISH_ARTIFACT_ID = 'lift-sdk'
-//        PUBLISH_VERSION = '0.9'
-//        bintrayRepo = 'maven'
-//        bintrayName = 'lift-sdk'
-//
-//        publishedGroupId = 'jp.co.logly'
-//        libraryName = 'Lift-SDK'
-//        artifact = 'lift-sdk'
-//
-//        libraryDescription = 'Logly Lift Mobile SDK for Android'
-//
-        siteUrl = 'https://github.com/logly/LiftSDK-Android'
-//        gitUrl = 'https://github.com/logly/LiftSDK-Android.git'
-//
-//        libraryVersion = "${version}"
-//
-//        developerId = 'adonishi'
-//        developerName = 'Ado Nishimura'
-//        developerEmail = 'ado@sig.or.jp'
-//
-//        licenseName = 'The Apache Software License, Version 2.0'
-//        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//        allLicenses = ["Apache-2.0"]
-    }
-
-    apply plugin: 'com.github.dcendents.android-maven'
-    apply plugin: 'com.jfrog.bintray'
-
-    bintray {
-        user = 'adonishi'
-        key = 'd02480eddeefe204f12ebcb38c69b13b9d013e1d'
-        configurations = ['archives'] //When uploading configuration files
-        pkg {
-            repo = 'Logly-Lift-SDK'
-            name = 'lift-sdk'
-            userOrg = 'adonishi'
-            licenses = ['Apache-2.0']
-            vcsUrl = 'https://github.com/logly/LiftSDK-Android.git'
-            version {
-                //name = "${version}"
-                name = '0.9.10' 
-                desc = 'Logly Lift Mobile SDK for Android'
-                released  = new Date()
-                vcsTag = "${version}"
-//                attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-            }
-        }
-    }
-
-    install {
-        repositories.mavenInstaller {
-            pom {
-                project {
-                    packaging 'aar'
-                    name 'Logly Lift Mobile SDK for Android'
-                    url siteUrl
-                    licenses {
-                        license {
-                            name 'The Apache Software License, Version 2.0'
-                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id 'adonishi'
-                            name 'Ado Nishimura'
-                            email 'ado@sig.or.jp'
-                        }
-                    }
-                    scm {
-                        connection 'https://github.com/logly/LiftSDK-Android.git'
-                        developerConnection 'https://github.com/logly/LiftSDK-Android.git'
-                        url siteUrl
-
-                    }
+        // Rename the aar correctly
+        libraryVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFileName = output.outputFileName
+                if (outputFileName.endsWith('.aar')) {
+                    def fileName = "${project.name}-${variant.baseName}-${version}.aar"
+                    output.outputFileName = new File(fileName)
                 }
             }
+        }
+
+        dependencies {
+            compileOnly 'javax.annotation:jsr250-api:1.0'
+        }
+    }
+
+    afterEvaluate {
+        android.libraryVariants.all { variant ->
+            def task = project.tasks.create "jar${variant.name.capitalize()}", Jar
+            task.description = "Create jar artifact for ${variant.name}"
+            task.dependsOn variant.javaCompile
+            task.from variant.javaCompile.destinationDir
+            task.destinationDir = project.file("${project.buildDir}/outputs/jar")
+            task.archiveName = "${project.name}-${variant.baseName}-${version}.jar"
+            artifacts.add('archives', task);
         }
     }
 
@@ -164,22 +69,8 @@ if(hasProperty('target') && target == 'android') {
         classifier = 'sources'
     }
 
-    task javadoc(type: Javadoc) {
-        source = android.sourceSets.main.java.srcDirs
-        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    }
-
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
-        from javadoc.destinationDir
-    }
     artifacts {
-//        archives javadocJar
         archives sourcesJar
-    }
-
-    task findConventions << {
-        println project.getConvention()
     }
 
 } else {
@@ -203,14 +94,11 @@ if(hasProperty('target') && target == 'android') {
 }
 
 dependencies {
-    compile 'io.swagger:swagger-annotations:1.5.8'
-    compile 'com.squareup.okhttp:okhttp:2.7.5'
-    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
-    compile 'com.google.code.gson:gson:2.6.2'
-    compile 'joda-time:joda-time:2.9.3'
-    testCompile 'junit:junit:4.12'
-}
-
-android {
-    buildToolsVersion '25.0.0'
+    implementation 'io.swagger:swagger-annotations:1.5.15'
+    implementation 'com.squareup.okhttp:okhttp:2.7.5'
+    implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'io.gsonfire:gson-fire:1.8.0'
+    implementation 'org.threeten:threetenbp:1.3.5'
+    testImplementation 'junit:junit:4.12'
 }

@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -150,10 +151,25 @@ public class WidgetView extends LinearLayout {
         private String resolveUrl(String url) {
             int index = mURL.indexOf(":");
             String protocol = mURL.substring(0, index+ 1);
+            if (!protocol.startsWith("http")) {
+                protocol = "https:";
+            }
             if (url.startsWith("//")) {     // protocol relative URL.
                 url = protocol + url;
             }
             return url;
+        }
+    }
+
+    private static class ClickAsyncTask extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... url) {
+            try {
+                new java.net.URL(url[0]).getContent();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 
@@ -172,17 +188,7 @@ public class WidgetView extends LinearLayout {
                 InlineResponse200Items item = mAdaptor.getItem(position);
 
                 // click tracking.
-                new AsyncTask<String, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(String... url) {
-                        try {
-                            new java.net.URL(url[0]).getContent();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        return null;
-                    }
-                }.execute(item.getUrl());
+                new ClickAsyncTask().execute(item.getUrl());
 
                 // click callback.
                 String url = item.getLdUrl();
@@ -201,6 +207,45 @@ public class WidgetView extends LinearLayout {
         });
     }
 
+    private static class RequestAsyncTask extends AsyncTask<Void, Void, InlineResponse200> {
+        private String mURL;
+        private long mAdspotID;
+        private long mWidgetID;
+        private String mRef;
+        private WeakReference<ResponseArrayAdaptor> mAdaptor;
+
+        RequestAsyncTask(final String inURL, final long inAdspotID, final long inWidgetID, final String inRef, final ResponseArrayAdaptor inAdaptor) {
+            mURL = inURL;
+            mAdspotID = inAdspotID;
+            mWidgetID = inWidgetID;
+            mRef = inRef;
+            mAdaptor = new WeakReference<>(inAdaptor);
+        }
+
+        @Override
+        protected InlineResponse200 doInBackground(Void... params) {
+            InlineResponse200 result = null;
+            try {
+                result = new DefaultApi().requestLift(mAdspotID, mWidgetID, mURL, mRef, "items");
+            } catch (ApiException e) {
+                Log.e("AsyncLiftRequest", e.getMessage());
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(InlineResponse200 result) {
+            ResponseArrayAdaptor adaptor = mAdaptor.get();
+            if (adaptor == null) { return; }
+
+            adaptor.clear();
+            if (result != null && result.getItems() != null)
+                adaptor.addAll(result.getItems());
+        }
+
+    }
+
     /**
      * start request Lift recommendation data.
      * @param inURL page URL as recommendation key.
@@ -212,28 +257,7 @@ public class WidgetView extends LinearLayout {
         mURL = inURL;
         mSentBeaconIndexes.clear();
 
-        new AsyncTask<Void, Void, InlineResponse200>() {
-
-            @Override
-            protected InlineResponse200 doInBackground(Void... params) {
-                InlineResponse200 result = null;
-                try {
-                    result = new DefaultApi().requestLift(inAdspotID, inWidgetID, inURL, inRef, "items");
-                } catch (ApiException e) {
-                    Log.e("AsyncLiftRequest", e.getMessage());
-                    e.printStackTrace();
-                }
-                return result;
-            }
-
-            @Override
-            protected void onPostExecute(InlineResponse200 result) {
-                mAdaptor.clear();
-                if (result != null && result.getItems() != null)
-                    mAdaptor.addAll(result.getItems());
-            }
-
-        }.execute();
+        new RequestAsyncTask(inURL, inAdspotID, inWidgetID, inRef, mAdaptor).execute();
     }
 
  }
