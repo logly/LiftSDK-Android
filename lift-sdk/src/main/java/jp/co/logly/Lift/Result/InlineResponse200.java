@@ -99,6 +99,6 @@ public class InlineResponse200 {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

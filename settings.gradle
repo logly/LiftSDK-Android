@@ -1,1 +1,1 @@
-include ':sample-app', ':lift-sdk'
+include ':sample-app', ':lift-sdk', ':sample-app-kotlin'
