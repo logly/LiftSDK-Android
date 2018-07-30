@@ -7,15 +7,18 @@ version = '0.9.11'
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.+'
+        classpath 'com.android.tools.build:gradle:3.1.+'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
     }
 }
 
 repositories {
     jcenter()
+    google()
 }
 
 
@@ -90,6 +93,29 @@ if(hasProperty('target') && target == 'android') {
     task execute(type:JavaExec) {
        main = System.getProperty('mainClass')
        classpath = sourceSets.main.runtimeClasspath
+    }
+}
+
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = 'adonishi'
+    key = 'd02480eddeefe204f12ebcb38c69b13b9d013e1d'
+    configurations = ['archives'] //When uploading configuration files
+    pkg {
+        repo = 'Logly-Lift-SDK'
+        name = 'lift-sdk'
+        userOrg = 'adonishi'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/logly/LiftSDK-Android.git'
+        version {
+            //name = "${version}"
+            name = '0.9.10'
+            desc = 'Logly Lift Mobile SDK for Android'
+            released = new Date()
+            vcsTag = "${version}"
+            //attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
     }
 }
 
