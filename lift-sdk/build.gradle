@@ -99,8 +99,8 @@ if(hasProperty('target') && target == 'android') {
 apply plugin: 'com.jfrog.bintray'
 
 bintray {
-    user = 'adonishi'
-    key = 'd02480eddeefe204f12ebcb38c69b13b9d013e1d'
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
     configurations = ['archives'] //When uploading configuration files
     pkg {
         repo = 'Logly-Lift-SDK'
@@ -109,8 +109,7 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/logly/LiftSDK-Android.git'
         version {
-            //name = "${version}"
-            name = '0.9.10'
+            name = '0.9.12' 
             desc = 'Logly Lift Mobile SDK for Android'
             released = new Date()
             vcsTag = "${version}"
