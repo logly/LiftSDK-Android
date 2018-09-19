@@ -55,7 +55,7 @@ import jp.co.logly.ApiInvoker.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "http://l.logly.co.jp";
+    private String basePath = "https://l.logly.co.jp";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
