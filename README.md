@@ -2,7 +2,7 @@
  [ ![Download](https://api.bintray.com/packages/adonishi/Logly-Lift-SDK/lift-sdk/images/download.svg) ](https://bintray.com/adonishi/Logly-Lift-SDK/lift-sdk/_latestVersion) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## 概要
-Version: 0.9.12
+Version: 0.9.12.2
 
 * iOS SDK: https://github.com/logly/LiftSDK-iOS
 * Android SDK: https://github.com/logly/LiftSDK-Android
@@ -53,7 +53,7 @@ Android版のSDKライブラリをインストールするには、jCenterのmav
 
 ```
 dependencies {
-    compile 'jp.co.logly:lift-sdk:0.9.12'
+    compile 'jp.co.logly:lift-sdk:0.9.12.2'
 }
 ```
 
