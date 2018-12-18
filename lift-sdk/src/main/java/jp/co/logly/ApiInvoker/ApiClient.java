@@ -87,8 +87,8 @@ public class ApiClient {
 
         json = new JSON();
 
-        // modify User-Agent : "Logly-Mobile-Lift/0.9.11/java-okhttp-gson (Linux; Android 7.1; unknown Android SDK built for x86 ) Chrome/0.0.0 Mobile Safari ( Smart Phone )"
-        String UA = "Logly-Mobile-Lift/0.9.11/java-okhttp-gson ";
+        // modify User-Agent : "Logly-Mobile-Lift/0.9.1.2/java-okhttp-gson (Linux; Android 7.1; unknown Android SDK built for x86 ) Chrome/0.0.0 Mobile Safari ( Smart Phone )"
+        String UA = "Logly-Mobile-Lift/0.9.12.2/java-okhttp-gson ";
         String safari = "Mobile Safari ( Smart Phone )";
         if (Resources.getSystem().getConfiguration().smallestScreenWidthDp >= 600) {
             safari = "Safari ( Tablet )";

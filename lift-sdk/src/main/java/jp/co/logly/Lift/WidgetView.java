@@ -81,10 +81,10 @@ public class WidgetView extends LinearLayout {
      * Internal Class: DownloadImageTask
      **/
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
+        private WeakReference<ImageView> weakBmImage;
 
         public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
+            this.weakBmImage = new WeakReference<>(bmImage);
         }
 
         protected Bitmap doInBackground(String... urls) {
@@ -103,6 +103,7 @@ public class WidgetView extends LinearLayout {
         }
 
         protected void onPostExecute(Bitmap result) {
+            ImageView bmImage = weakBmImage.get();
             if (bmImage != null) {
                 bmImage.setImageBitmap(result);
             }
