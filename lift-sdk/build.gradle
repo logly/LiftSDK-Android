@@ -110,12 +110,15 @@ android {
     buildToolsVersion = '28.0.3'
 }
 
+group='jp.co.logly'
+version='0.9.12'
+
 publishing {
     publications {
-        maven(MavenPublication) {
-            groupId "jp.co.logly"
-            artifactId "LiftSDK-Android"
-            version "0.9.12.2"
+        gpr(MavenPublication) {
+            groupId "${group}"
+            artifactId 'lift-sdk'
+            version "${version}"
         }
     }
     repositories {
