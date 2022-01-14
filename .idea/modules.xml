@@ -6,10 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lift-sdk/LiftSDK-Android.lift-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/lift-sdk/LiftSDK-Android.lift-sdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-app/LiftSDK-Android.sample-app.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-app/LiftSDK-Android.sample-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-app-kotlin/LiftSDK-Android.sample-app-kotlin.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-app-kotlin/LiftSDK-Android.sample-app-kotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-client.iml" filepath="$PROJECT_DIR$/android-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lift-sdk/lift-sdk.iml" filepath="$PROJECT_DIR$/lift-sdk/lift-sdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample-app/sample-app.iml" filepath="$PROJECT_DIR$/sample-app/sample-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample-app-kotlin/sample-app-kotlin.iml" filepath="$PROJECT_DIR$/sample-app-kotlin/sample-app-kotlin.iml" />
     </modules>
   </component>
 </project>
