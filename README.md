@@ -29,7 +29,7 @@ liftシステムではページ単位でのレコメンドを行うので、モ�
 
 ## 必要システム・ヴァージョン
 * iOS: 8.1 以上
-* Android: SDK 30 (Android 11)以上
+* Android: SDK 16 (Android 4.1)以上
 
 ## インストール: iOS
 iOS版のSDKのライブラリをインストールするには、cocoapodsを使います。https://cocoapods.org/
