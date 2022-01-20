@@ -1,8 +1,8 @@
 # logly lift Mobile SDK
- [ ![Download](https://api.bintray.com/packages/adonishi/Logly-Lift-SDK/lift-sdk/images/download.svg) ](https://bintray.com/adonishi/Logly-Lift-SDK/lift-sdk/_latestVersion) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+ [ ![Download](https://img.shields.io/badge/github--packages-v0.9.13-brightgree) ](https://github.com/logly/LiftSDK-Android/packages/1133937) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## 概要
-Version: 0.9.12.2
+Version: 0.9.13
 
 * iOS SDK: https://github.com/logly/LiftSDK-iOS
 * Android SDK: https://github.com/logly/LiftSDK-Android
@@ -29,7 +29,7 @@ liftシステムではページ単位でのレコメンドを行うので、モ�
 
 ## 必要システム・ヴァージョン
 * iOS: 8.1 以上
-* Android: SDK 16 (Android 4.1.0)以上
+* Android: SDK 16 (Android 4.1)以上
 
 ## インストール: iOS
 iOS版のSDKのライブラリをインストールするには、cocoapodsを使います。https://cocoapods.org/
@@ -48,16 +48,33 @@ pod install
 ```
 
 ## インストール: Android
-Android版のSDKライブラリをインストールするには、jCenterのmavenリポジトリを使います。https://jcenter.bintray.com/
-組み込むアプリケーションのbuild.gradleのdependenciesセクションに以下を追加してください。
+Android版のSDKライブラリをインストールするには、GitHubPackagesのmavenリポジトリを使います。
 
+組み込むアプリケーションのbuild.gradleのrepositoriesセクションに以下を追加し、GitHubPackagesをレポジトリとして追加してください。
+ただし、`USERNAME`、`TOKEN` にはGitHubのアクセストークンとそのユーザー名を指定してください。アクセストークンの作成方法は[こちら](https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)をご参考ください。
 ```
-dependencies {
-    compile 'jp.co.logly:lift-sdk:0.9.12.2'
+repositories {
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/logly/LiftSDK-Android")
+        credentials {
+            username = "USERNAME"
+            password = "TOKEN"
+        }
+    }
 }
 ```
 
-もしAndroidManifestにネットアクセスの設定がない場合には、app/AndroidManifest.xmlに以下を追加
+同様に組み込むアプリケーションのbuild.gradleのdependenciesセクションに以下を追加してください。
+```
+dependencies {
+    implementation 'jp.co.logly:lift-sdk:0.9.13'
+}
+```
+
+
+
+もしAndroidManifestにネットアクセスの設定がない場合には、app/AndroidManifest.xmlに以下を追加してください。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
